@@ -2,6 +2,8 @@
   .songs__list__container{
     flex: 3;
     transition: all .3s ease-out;
+    padding-bottom: 70px;
+    margin-top:50px;
 
     .song__item{
       padding: 12px 15px;
@@ -39,27 +41,49 @@
 <template>
   <div class="songs__list__container" >
     <ul class="songs__list">
-      <li class="song__item" v-for="song in songs">
-        {{song.title}}
-        <span class="time">03:20</span>  
+      <li class="song__item" v-for="track in tracks">
+        {{track.title}}
+        <span class="time">{{convertToTime(track.duration)}}</span>  
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+  import {mapState} from 'vuex'
+
   export default {
     data() {
       return{
-        songs: [
-          {title: 'Ime prve pjesme'},
-          {title: 'Ime druge pjesme'}
-        ]
+     
       }
     },
-    created () {
-      console.log("Search component initialized");
+    computed: mapState([
+      'tracks'
+    ]),
+
+    methods:{
+      convertToTime(milliseconds){
+        const hours = Math.floor(milliseconds / 3600000);
+        milliseconds = milliseconds % 3600000;
+
+        const minutes = Math.floor(milliseconds / 60000);
+        milliseconds = milliseconds % 60000;
+
+        const seconds = Math.floor(milliseconds / 1000);
+        milliseconds = Math.floor(milliseconds % 1000);
+
+        const left = minutes < 10 ? `0${minutes}` : minutes;
+        const right = seconds < 10 ? `0${seconds}` : seconds;
+
+        return `${left}:${right}`;
+          }
+    },
+
+    mounted(){
+      this.$store.dispatch('LOAD_RECENT_TRACKS')
     }
+   
   }
 </script>
 

@@ -2,12 +2,12 @@
   .search{
     display: flex;
     flex-direction: row;
-    
+
     .search__input{
       flex: 1;
       border: 0;
       border-bottom: 1px solid #999;
-      padding: 1em;
+      padding: 1.5em;
     }
   }
 </style>

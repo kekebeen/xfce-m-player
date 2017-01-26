@@ -11,6 +11,10 @@
 
   body {
     font-family: Lato, Helvetica, sans-serif;
+    background: #3F51B5;
+    color: white;
+    margin: 0;
+    padding: 0;
   }
 </style>
 

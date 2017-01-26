@@ -52,6 +52,7 @@
     "sass-loader": "^4.1.1",
     "vue-aplayer": "^0.1.0",
     "vue-audio": "0.0.2",
+    "vue-howler": "^0.1.4",
     "vuex": "^2.1.1"
   }
 }
